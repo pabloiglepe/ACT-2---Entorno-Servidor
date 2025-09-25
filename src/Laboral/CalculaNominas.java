@@ -23,8 +23,6 @@ public class CalculaNominas {
         Scanner sc = new Scanner(System.in);
         int opcion;
 
-
-
         // PARTE 2
         // LECTURA .TXT
         String archivo = "empleados.txt";
@@ -112,6 +110,25 @@ public class CalculaNominas {
                 case 1:
 
                     break;
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 5:
+
+                    break;
+
+                case 6:
+
+                    break;
 
                 default:
                     break;
@@ -120,9 +137,6 @@ public class CalculaNominas {
         } while (opcion != 0);
     }
 
-
-
-    
     private static void escribe(Empleado e1, Empleado e2) {
         e1.Imprime();
         System.out.println("El sueldo de James es: " + Nomina.sueldo(e1));
