@@ -3,7 +3,9 @@ package Laboral;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CalculaNominas {
@@ -114,7 +116,7 @@ public class CalculaNominas {
 			case 2:
 				System.out.print("Dame un DNI: ");
 				String dni = sc.nextLine().trim();
-				mostrarEmpleadosDni(conn, dni);
+				mostrarSueldoDni(conn, dni);
 
 				break;
 
@@ -131,7 +133,6 @@ public class CalculaNominas {
 				break;
 
 			case 6:
-
 				break;
 
 			default:
@@ -200,7 +201,7 @@ public class CalculaNominas {
 				String dni = rs.getString("dni");
 				char sexo = rs.getString("sexo").charAt(0);
 				int categoria = rs.getInt("categoria");
-				int anyosTrabajados = rs.getInt("anyos");
+				int anyosTrabajados = rs.getInt("anyosTrabajados");
 				lista.add(new Empleado(sexo, dni, nombre, anyosTrabajados, categoria));
 			}
 		}
@@ -208,7 +209,7 @@ public class CalculaNominas {
 	}
 
 	// MOSTRAR EL SUELDO POR DNI
-	private static int mostrarEmpleadosDni(Connection conn, String dni) throws SQLException {
+	private static int mostrarSueldoDni(Connection conn, String dni) throws SQLException {
 		String sql = "SELECT sueldo FROM Nominas WHERE dni = ?";
 
 		try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -227,7 +228,7 @@ public class CalculaNominas {
 
 	// MOSTRAR EL SUELDO POR DNI
 	private static int updateSueldoEmpleado(Connection conn, String dni) throws SQLException {
-		String sql = "UPDATE nominas SET sueldo WHERE dni = ?	";
+		String sql = "UPDATE nominas SET sueldo WHERE dni = ?";
 
 		try (PreparedStatement ps = conn.prepareStatement(sql)) {
 			ps.setString(1, dni);
