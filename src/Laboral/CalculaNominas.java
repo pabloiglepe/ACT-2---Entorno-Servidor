@@ -226,22 +226,4 @@ public class CalculaNominas {
 		}
 	}
 
-	// MOSTRAR EL SUELDO POR DNI
-	private static int updateSueldoEmpleado(Connection conn, String dni) throws SQLException {
-		String sql = "UPDATE nominas SET sueldo WHERE dni = ?";
-
-		try (PreparedStatement ps = conn.prepareStatement(sql)) {
-			ps.setString(1, dni);
-
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next()) {
-					return rs.getInt("sueldo");
-				} else {
-					return -1;
-				}
-			}
-
-		}
-	}
-
 }
